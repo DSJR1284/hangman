@@ -1,0 +1,6 @@
+class Hangman 
+
+
+
+
+end 
