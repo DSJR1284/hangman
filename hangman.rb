@@ -3,6 +3,7 @@ class Hangman
     def initialize 
         letters = ('a'..'z').to_a
         @word = words.sample 
+        @tries = 7
     end 
 
     def words 
@@ -34,9 +35,9 @@ class Hangman
         
         if good_guess
             puts "Good Job"
-
         else 
-            puts "Sorry Wrong Letter..try again"
+            @tries --
+            puts "Sorry Wrong Letter you have #{ @tries } left. Try Again"
         end 
     end 
 
