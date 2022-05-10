@@ -32,7 +32,7 @@ class Hangman
 
         new_hint.each_with_index do |letter, index|
             #replace blank values with corret leters in the word were trying to guess 
-            if letter == '_' && @word.first[index] == last_guess
+            if letter == '_ ' && @word.first[index] == last_guess
                 new_hint[index] = last_guess
             end 
         end
@@ -45,8 +45,10 @@ class Hangman
         guess = gets.chomp 
         # if the letter is not part of the word removed the letters from array 
         good_guess = @word.first.include? guess 
-        
-        if good_guess
+
+        if guess == 'quit'
+            puts "Thank You for playing. come back anytime."        
+        elsif good_guess
             puts "Good Job...Try another letter"
             @correct_guesses << guess
             #removed correct guess from alphabet
@@ -67,6 +69,7 @@ class Hangman
         #ask the user for a letter
         puts "Welcome to Hangman"
         puts "The Game has started"
+        puts "To exit game at any point type 'quit'"
         print_hint    
         puts "Your Word is #{ @word.first.size} letters long"    
         puts "Your hint is: #{ @word.last }" 
