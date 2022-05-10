@@ -27,7 +27,8 @@ class Hangman
 
     end 
 
-    def make_guess 
+    def make_guess
+        if @tries > 0  
         puts "Enter a letter"
         guess = gets.chomp 
         # if the letter is not part of the word removed the letters from array 
@@ -36,8 +37,12 @@ class Hangman
         if good_guess
             puts "Good Job"
         else 
-            @tries --
-            puts "Sorry Wrong Letter you have #{ @tries } left. Try Again"
+            @tries -= 1
+            puts "Sorry Wrong Letter you have #{ @tries } left. Try Again!"
+            make_guess
+        end
+            else
+                puts "Game Over"
         end 
     end 
 
